@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="selector.css">
+</head>
+<body>
+    <select class="selector" multiple='multiple'>
+        <option value="1">Option1</option>
+        <option value="2">Option2</option>
+        <option value="3">Option3</option>
+    </select>
+
+     
+
+    <div class="selector__container">
+        <div class="selector__select">
+            <span class="selector__placeholder">Select Options</span>
+            <span class="selector__caret">🢓</span>
+        </div>
+        <div class="selector__select_container">
+            <div class="selector__search">
+                <div class="selector__search_box" contenteditable="true">
+            </div>
+            <div class="selector__custom__option" data-value="1">Option1</div>
+            <div class="selector__custom__option" data-value="2">Option2</div>
+            <div class="selector__custom__option" data-value="3">Option3</div>
+        </div>
+    </div>
+
+
+    <script>
+        let selector = function(selector){
+
+         
+            // const customElements = () => {
+            //     return ``   
+            // }
+
+           
+            let select = document.querySelector(selector);
+
+            // document.querySelector('body').append(customElements());
+
+            let options = select.querySelectorAll('option');
+            let type = select.getAttribute('multiple');
+            let container = document.querySelector(selector+'__container');
+            let search = container.querySelector(`${selector}__select_container ${selector}__search ${selector}__search_box`);
+            let custom_options = document.querySelectorAll(`${selector}__custom__option`);
+            
+
+
+            const activeOption = (active) => {
+            let arr = [];
+            let arrTxt = [];
+            active.forEach(e => arr.push(e.dataset.value));
+            active.forEach(e => arrTxt.push(e.innerText));
+            activeTags(arrTxt);
+            options.forEach(each => {
+                if(arr.includes(each.value)){
+                    each.setAttribute('selected', 'true');
+                }else{
+                    each.removeAttribute('selected');
+                }
+            })
+            }
+
+            const activeTags = (options) => {
+                console.log(options);
+            }
+
+            const reset = () => {
+                custom_options.forEach(each => each.classList.remove('active'));
+            }
+
+            const multiple = (type) => {
+                if(type != 'multiple' && type != "" && type != 'true') {
+                    return false
+                }
+                else{
+                    return true
+                } 
+            }
+
+            search.addEventListener('keyup', e => {
+                let filter = e.target.innerText;
+                let arr = [];
+                custom_options.forEach(each => {
+                    let txt = each.textContent || each.innerText;
+                    if (txt.toLowerCase().indexOf(filter) > -1) {
+                        each.style.display =""
+                    }else{
+                        each.style.display ="none"
+                    }
+                });
+                
+            })
+
+
+        
+            custom_options.forEach(option => {
+                option.addEventListener('click', e => {
+                    if (!multiple(type)) {
+                        reset();
+                        e.target.classList.add('active');
+                    }else{
+                        e.target.classList.toggle('active');
+                    }
+                
+                    let optionText = option.textContent;
+                    let value = option.dataset.value;
+
+                    let custom_options_active = document.querySelectorAll(selector+'__custom__option.active');
+                    activeOption(custom_options_active)
+                })
+            })
+
+        }
+
+        selector('.selector');
+        // console.log(custom_options);
+    </script>
+</body>
+</html>

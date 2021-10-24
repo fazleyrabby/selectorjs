@@ -1,0 +1,56 @@
+/* .customSelect{
+    opacity: 0;
+} */
+
+.selector__container{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: max-content;
+    max-width: 150px;
+    min-width: max-content;
+    word-wrap: normal;
+}
+.selector__container .selector__select_container{
+    padding: 5px;
+}
+.selector__container .selector__placeholder{
+    border: 1px solid black;
+    width: 100%;
+    padding: 2px;
+}
+.selector__container .selector__search{
+    width: 95%;
+    margin: 0 auto;
+    padding: 2px 0;
+}
+
+.selector__container .selector__search .selector__search_box{
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 0 5px;
+    border-radius: 2px;
+    /* width: 100%; */
+}
+
+.selector__container .selector__select{
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+.selector__container .selector__caret {
+    position: absolute;
+    right: 0;
+    margin: 5px 0;
+}
+
+.selector__container .selector__custom__option{
+    padding: 2px 0;
+}
+
+.selector__container .selector__custom__option:hover{
+    background: #f3f3f3;
+    cursor: pointer;
+}
+
+.selector__container .selector__custom__option.active{
+    background: #f3f3f3;
+}

@@ -1,1 +1,123 @@
-*{font-family:sans-serif;box-sizing:border-box;margin:0;padding:0}body{font-size:18px;width:80%;margin:4rem auto}h3{margin-bottom:15px}select{width:300px;font-size:1.2rem}select.selector,select.selector2{font-size:2rem}.selectorjs__hidden{opacity:0;height:0;width:0;position:absolute}.selector__container{box-shadow:rgba(0,0,0,.24) 0 3px 8px;height:max-content;max-width:max-content;min-width:300px;word-wrap:normal;position:relative}.selector__container .selector__select_container{height:max-content;width:100%;display:none;background-color:#fff;box-shadow:rgba(0,0,0,.24) 0 3px 8px}.selector__container .selector__select_container.show{position:absolute;padding:5px;z-index:1;display:block}.selector__container .selector__placeholder{border-bottom:.1px solid #c3c3c3;width:100%;padding:5px}.selector__container .selector__search{width:100%;margin:0 auto;padding:2px 0}.selector__container .selector__search .selector__search_box{border:0;box-shadow:rgba(0,0,0,.05) 0 6px 24px 0,rgba(0,0,0,.08) 0 0 0 1px;padding:0 5px;border-radius:2px;position:relative}.selector__container .selector__search .selector__search_box::before{content:"search options...";opacity:.1;font-size:12px;position:absolute;left:5px;top:50%;transform:translate(0,-50%)}.selector__container .selector__select{display:flex;position:relative;cursor:pointer}.selector__container .selector__caret{position:relative}.selector__caret::before{content:"🢓";position:absolute;margin:5px 0;right:0}.selector__container .selector__custom__option{padding:4px 0}.selector__container .selector__custom__option:hover{background:#f3f3f3;cursor:pointer}.selector__container .selector__custom__option.active{background:#f3f3f3;position:relative}.selector__container .selector__custom__option.active::before{content:"\d7";right:5px;position:absolute;font-size:10px}
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 18px;
+    width: 80%;
+    margin: 4rem auto;
+}
+h3{
+    margin-bottom: 15px;
+}
+select{
+    width: 300px;
+    font-size: 1.2rem;
+}
+select.selector, 
+select.selector2 
+{
+    font-size: 2rem;
+}
+
+*.selectorjs__hidden{
+    opacity: 0;
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+.selector__container{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: max-content;
+    max-width: max-content;
+    min-width: 300px;
+    word-wrap: normal;
+    position: relative;
+}
+
+.selector__container .selector__select_container{
+    height: max-content;
+    width: 100%;
+    /* height: 0;
+    opacity: 0;
+    transition: all 250ms ease; */
+    display: none;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.selector__container .selector__select_container.show{
+    position: absolute;
+    padding: 5px;
+    z-index: 1;
+    display:block;
+}
+.selector__container .selector__placeholder{
+    border-bottom: 0.1px solid #c3c3c3;
+    width: 100%;
+    padding: 5px;
+}
+.selector__container .selector__search{
+    width: 100%;
+    margin: 0 auto;
+    padding: 2px 0;
+}
+
+.selector__container .selector__search .selector__search_box{
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 0 5px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.selector__container .selector__search .selector__search_box::before{
+    content: "search options...";
+    opacity: 0.1;
+    font-size: 12px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+
+.selector__container .selector__select{
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+.selector__container .selector__caret {
+    position: relative;
+    
+}
+.selector__caret::before{
+    content: "🢓";
+    position: absolute;
+    margin: 5px 0;
+    right: 0;
+}
+
+.selector__container .selector__custom__option{
+    padding: 4px 0;
+}
+
+.selector__container .selector__custom__option:hover{
+    background: #f3f3f3;
+    cursor: pointer;
+}
+
+.selector__container .selector__custom__option.active{
+    background: #f3f3f3;
+    position: relative;
+}
+
+.selector__container .selector__custom__option.active::before{
+    content: "\d7";
+    right: 5px;
+    position: absolute;
+    font-size: 10px;
+}

@@ -121,6 +121,7 @@ let selector = function(selector, config = {}){
     }
 
     const multiple = (type) => {
+        console.log(type);
         if(type != 'multiple' && type != "" && type != 'true') {
             return false
         }

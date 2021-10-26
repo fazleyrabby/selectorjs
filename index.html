@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selectorjs - customer select option</title>
     <link rel="stylesheet" href="selector.css">
-    
 </head>
 <body>
     <h3>Default Select</h3>
@@ -19,8 +18,18 @@
     <span>No script</span>
     <br>
     <br>
-    <h3>SelectorJs with multiple options - (No placeholder)</h3>
-    <select class="selector" multiple='multiple'>
+    <h3>Default Multi Select</h3>
+    <select multiple="true">
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+    </select>
+    <br>
+    <br>
+    <span>No script</span>
+    <br>
+    <br>
+    <h3>SelectorJs single option - (No placeholder)</h3>
+    <select class="selector">
         <option value="1">Lemon</option>
         <option value="2">Mango</option>
         <option value="3">Apple</option>
@@ -31,25 +40,42 @@
     <span>init script function: selector('.selector')</span>
     <br>
     <br>
-    <h3>SelectorJs with multiple options - (Custom Placeholder)</h3>
-    <select class="selector2" multiple='multiple'>
-        <option value="1">PHP</option>
-        <option value="2">MYSQL</option>
-    </select>
-    <br>
-    <span>init script function: selector('.selector2', { placeholder: 'Select 2' })</span>
-    <br>
 
-    <h3>SelectorJs with single options  - (Custom Placeholder)</h3>
-    <select class="selector3" multiple='false'>
+    <h3>SelectorJs with single option  - (Custom Placeholder)</h3>
+    <select class="selector2">
         <option value="1">C++</option>
         <option value="2">Java</option>
         <option value="3">C#</option>
     </select>
     <br>
-    <span>init script function: selector('.selector3', { placeholder: 'Select 3' })</span>
+    <span>init script function: selector('.selector2', { placeholder: 'Select 2' })</span>
     <br>
     <br>
+
+    
+    <h3>SelectorJs with multiple options - (No Placeholder)</h3>
+    <select class="selector3" multiple='multiple'>
+        <option value="1">PHP</option>
+        <option value="2">MYSQL</option>
+    </select>
+    <br>
+    <span>init script function: selector('.selector3')</span>
+    <br>
+    <br>
+
+    <h3>SelectorJs with multiple options - (Custom Placeholder)</h3>
+    <select class="selector4" multiple='multiple'>
+        <option value="1">Rust</option>
+        <option value="2">Go</option>
+        <option value="3">Kotlin</option>
+        <option value="4">Scala</option>
+    </select>
+    <br>
+    <span>init script function: selector('.selector4', { placeholder: 'Select 4' })</span>
+    <br>
+    <br>
+
+
 
 
     <code>Note: Elements should have different class names</code>
@@ -57,13 +83,16 @@
     <br>
     <br>
     <i>**Same class support will be added later**</></i>
-    
+
+   
 
     <script src="selector.js"></script>
     <script>
         selector('.selector');
         selector('.selector2', { placeholder: 'Select 2' });
-        selector('.selector3', { placeholder: 'Select 3' });
+        selector('.selector3',);
+        selector('.selector4', { placeholder: 'Select 4' });
+        
     </script>
 </body>
 </html>

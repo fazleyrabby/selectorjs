@@ -6,122 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="selector.css">
+    
 </head>
 <body>
-    <select class="selector" multiple='multiple'>
-        <option value="1">Option1</option>
-        <option value="2">Option2</option>
-        <option value="3">Option3</option>
+    <h3>Default Select</h3>
+    <select>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
     </select>
+    <br>
+    <br>
+    <span>No script</span>
+    <br>
+    <br>
+    <h3>SelectorJs with multiple options - (No placeholder)</h3>
+    <select class="selector" multiple='multiple'>
+        <option value="1">Lemon</option>
+        <option value="2">Mango</option>
+        <option value="3">Apple</option>
+        <option value="4">Apple1</option>
+        <option value="5">Apple2</option>
+    </select>
+    <br>
+    <span>init script function: selector('.selector')</span>
+    <br>
+    <br>
+    <h3>SelectorJs with multiple options - (Custom Placeholder)</h3>
+    <select class="selector2" multiple='multiple'>
+        <option value="1">PHP</option>
+        <option value="2">MYSQL</option>
+    </select>
+    <br>
+    <span>init script function: selector('.selector2', { placeholder: 'Select 2' })</span>
+    <br>
 
-     
-
-    <div class="selector__container">
-        <div class="selector__select">
-            <span class="selector__placeholder">Select Options</span>
-            <span class="selector__caret">🢓</span>
-        </div>
-        <div class="selector__select_container">
-            <div class="selector__search">
-                <div class="selector__search_box" contenteditable="true">
-            </div>
-            <div class="selector__custom__option" data-value="1">Option1</div>
-            <div class="selector__custom__option" data-value="2">Option2</div>
-            <div class="selector__custom__option" data-value="3">Option3</div>
-        </div>
-    </div>
+    <h3>SelectorJs with single options  - (Custom Placeholder)</h3>
+    <select class="selector3" multiple='false'>
+        <option value="1">C++</option>
+        <option value="2">Java</option>
+        <option value="3">C#</option>
+    </select>
+    <br>
+    <span>init script function: selector('.selector3', { placeholder: 'Select 3' })</span>
+    <br>
+    <br>
 
 
+    <code>Note: Elements should have different class names</code>
+    <br>
+    <br>
+    <br>
+    <i>**Same class support will be added later**</></i>
+    
+
+    <script src="selector.js"></script>
     <script>
-        let selector = function(selector){
-
-         
-            // const customElements = () => {
-            //     return ``   
-            // }
-
-           
-            let select = document.querySelector(selector);
-
-            // document.querySelector('body').append(customElements());
-
-            let options = select.querySelectorAll('option');
-            let type = select.getAttribute('multiple');
-            let container = document.querySelector(selector+'__container');
-            let search = container.querySelector(`${selector}__select_container ${selector}__search ${selector}__search_box`);
-            let custom_options = document.querySelectorAll(`${selector}__custom__option`);
-            
-
-
-            const activeOption = (active) => {
-            let arr = [];
-            let arrTxt = [];
-            active.forEach(e => arr.push(e.dataset.value));
-            active.forEach(e => arrTxt.push(e.innerText));
-            activeTags(arrTxt);
-            options.forEach(each => {
-                if(arr.includes(each.value)){
-                    each.setAttribute('selected', 'true');
-                }else{
-                    each.removeAttribute('selected');
-                }
-            })
-            }
-
-            const activeTags = (options) => {
-                console.log(options);
-            }
-
-            const reset = () => {
-                custom_options.forEach(each => each.classList.remove('active'));
-            }
-
-            const multiple = (type) => {
-                if(type != 'multiple' && type != "" && type != 'true') {
-                    return false
-                }
-                else{
-                    return true
-                } 
-            }
-
-            search.addEventListener('keyup', e => {
-                let filter = e.target.innerText;
-                let arr = [];
-                custom_options.forEach(each => {
-                    let txt = each.textContent || each.innerText;
-                    if (txt.toLowerCase().indexOf(filter) > -1) {
-                        each.style.display =""
-                    }else{
-                        each.style.display ="none"
-                    }
-                });
-                
-            })
-
-
-        
-            custom_options.forEach(option => {
-                option.addEventListener('click', e => {
-                    if (!multiple(type)) {
-                        reset();
-                        e.target.classList.add('active');
-                    }else{
-                        e.target.classList.toggle('active');
-                    }
-                
-                    let optionText = option.textContent;
-                    let value = option.dataset.value;
-
-                    let custom_options_active = document.querySelectorAll(selector+'__custom__option.active');
-                    activeOption(custom_options_active)
-                })
-            })
-
-        }
-
         selector('.selector');
-        // console.log(custom_options);
+        selector('.selector2', { placeholder: 'Select 2' });
+        selector('.selector3', { placeholder: 'Select 3' });
     </script>
 </body>
 </html>

@@ -131,12 +131,13 @@ let selector = function (selector, config = {}) {
         }
 
         search?.addEventListener('keyup', e => {
+           
             let filter = e.target.innerText;
             filter = filter.toLowerCase();
             let arr = [];
             custom_options.forEach(each => {
                 let txt = each.textContent || each.innerText;
-                if (txt.toLowerCase().indexOf(filter) > -1 && filter == "") {
+                if (txt.toLowerCase().indexOf(filter) > -1) {
                     each.style.display = "block"
                 } else {
                     each.style.display = "none"

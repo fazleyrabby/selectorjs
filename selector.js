@@ -136,7 +136,7 @@ let selector = function (selector, config = {}) {
             let arr = [];
             custom_options.forEach(each => {
                 let txt = each.textContent || each.innerText;
-                if (txt.toLowerCase().indexOf(filter) > -1) {
+                if (txt.toLowerCase().indexOf(filter) > -1 && filter == "") {
                     each.style.display = "block"
                 } else {
                     each.style.display = "none"

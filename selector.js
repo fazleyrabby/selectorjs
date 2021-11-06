@@ -1,12 +1,20 @@
 let selector = function (selector, config = {}) {
 
-    let selects = document.querySelectorAll(selector);
+    let selects = '';
+    let selectorTxt = '';
 
-    selects.forEach((select, key) => {
+    if(selector.includes('.')){
+        selects = document.querySelectorAll(selector)
+        selectorTxt = selector.replace('.', '');
+        selects.forEach((select, key) => renderOptions(select, selectorTxt, key))
+    }else if(selector.includes('#')){
+        select = document.querySelector(selector)
+        selectorTxt = selector.replace('#', '');
+        renderOptions(select, selectorTxt)
+    }
+
+    function renderOptions(select, selectorTxt, key= ''){
         select.classList.add('selectorjs__hidden');
-
-        const selectorTxt = selector.replace('.', '');
-
 
         let __container = document.createElement('div');
         __container.classList.add(selectorTxt);
@@ -73,9 +81,9 @@ let selector = function (selector, config = {}) {
 
 
         let type = select.getAttribute('multiple');
-        let container = document.querySelector(selector + '.selector__container');
-        let search = container.querySelector(`${selector}.selector__select_container ${selector}.selector__search input${selector}.selector__search_box`);
-        let custom_options = document.querySelectorAll(`${selector}.selector__custom__option`);
+        let container = document.querySelector('.'+selectorTxt+'.selector__container');
+        let search = container.querySelector(`.${selectorTxt}.selector__select_container .${selectorTxt}.selector__search input.${selectorTxt}.selector__search_box`);
+        let custom_options = document.querySelectorAll(`.${selectorTxt}.selector__custom__option`);
 
 
         const activeOption = (active, target) => {
@@ -100,7 +108,7 @@ let selector = function (selector, config = {}) {
 
         const activeTags = (options, target) => {
             let defaultPlaceholder = config?.placeholder ?? 'Select Placeholder';
-            let placeholder = target.querySelector(selector + '.selector__placeholder');
+            let placeholder = target.querySelector(`.${selectorTxt}` + '.selector__placeholder');
             let html = '';
             if (options.length == 0) {
                 html = '';
@@ -121,7 +129,6 @@ let selector = function (selector, config = {}) {
         }
 
         const multiple = (type) => {
-            console.log(type);
             if (type != 'multiple' && type != "" && type != 'true') {
                 return false
             }
@@ -156,15 +163,15 @@ let selector = function (selector, config = {}) {
                 }
                 // let optionText = option.textContent;
                 // let value = option.dataset.value;
-                let parent = e.target.parentNode.closest(selector + '.selector__container');
+                let parent = e.target.parentNode.closest(`.${selectorTxt}` + '.selector__container');
 
-                let custom_options_active = parent.querySelectorAll(selector + '.selector__custom__option.active');
+                let custom_options_active = parent.querySelectorAll(`.${selectorTxt}` + '.selector__custom__option.active');
 
                 activeOption(custom_options_active, parent)
             })
         })
-    })
+    }
 
-
+  
 
 }

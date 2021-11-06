@@ -161,8 +161,6 @@ let selector = function (selector, config = {}) {
                 } else {
                     e.target.classList.toggle('active');
                 }
-                // let optionText = option.textContent;
-                // let value = option.dataset.value;
                 let parent = e.target.parentNode.closest(`.${selectorTxt}` + '.selector__container');
 
                 let custom_options_active = parent.querySelectorAll(`.${selectorTxt}` + '.selector__custom__option.active');

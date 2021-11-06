@@ -42,10 +42,10 @@ let selector = function (selector, config = {}) {
 
         __select_container.appendChild(__search);
 
-        let __search_box = document.createElement('div');
+        let __search_box = document.createElement('input');
         __search_box.classList.add(selectorTxt);
         __search_box.classList.add('selector__search_box');
-        __search_box.setAttribute('contenteditable', true);
+        __search_box.setAttribute('placeholder', 'Search...');
 
         __search.appendChild(__search_box);
 
@@ -74,7 +74,7 @@ let selector = function (selector, config = {}) {
 
         let type = select.getAttribute('multiple');
         let container = document.querySelector(selector + '.selector__container');
-        let search = container.querySelector(`${selector}.selector__select_container ${selector}.selector__search ${selector}.selector__search_box`);
+        let search = container.querySelector(`${selector}.selector__select_container ${selector}.selector__search input${selector}.selector__search_box`);
         let custom_options = document.querySelectorAll(`${selector}.selector__custom__option`);
 
 
@@ -131,13 +131,12 @@ let selector = function (selector, config = {}) {
         }
 
         search?.addEventListener('keyup', e => {
-           
-            let filter = e.target.innerText;
-            filter = filter.toLowerCase();
+            let filter = e.target.value;
+            filter = filter.toUpperCase();
             let arr = [];
             custom_options.forEach(each => {
                 let txt = each.textContent || each.innerText;
-                if (txt.toLowerCase().indexOf(filter) > -1) {
+                if (txt.toUpperCase().indexOf(filter) > -1) {
                     each.style.display = "block"
                 } else {
                     each.style.display = "none"
@@ -155,7 +154,6 @@ let selector = function (selector, config = {}) {
                 } else {
                     e.target.classList.toggle('active');
                 }
-
                 // let optionText = option.textContent;
                 // let value = option.dataset.value;
                 let parent = e.target.parentNode.closest(selector + '.selector__container');
